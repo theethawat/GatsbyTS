@@ -1,0 +1,23 @@
+/*Global*/
+
+.subtitle-negative-margin{
+    margin:0.25rem;
+}
+.thp-padding{
+    padding: 0.8em;
+}
+.thp-remove-top{
+    margin-top:2px;
+}
+.thp-remove-bottom{
+    margin-bottom:2px;
+}
+.thp-remove-pd-top{
+    margin-top:2px;
+}
+.thp-remove-pd-bottom{
+    margin-bottom:2px;
+}
+.prompt{
+    font-family: 'Prompt', sans-serif;
+}
