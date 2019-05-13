@@ -57,7 +57,7 @@ class index extends Component {
             </div>
             <div className="col-sm-8">
               <h3 className="kanit ">What is Theethawat ?</h3>
-              <p>{this.state.introduction}</p>
+              <p className="kanitlight">{this.state.introduction}</p>
             </div>
           </div>
         </div>
