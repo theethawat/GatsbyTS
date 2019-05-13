@@ -4,6 +4,11 @@ import "bootstrap/dist/js/bootstrap"
 import "../assets/global.css"
 import Title from "../components/title"
 import firebase from "firebase"
+import { library } from "@fortawesome/fontawesome-svg-core"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faStroopwafel } from "@fortawesome/free-solid-svg-icons"
+library.add(faStroopwafel)
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBziLwjuiOea2awTRZ05r-WqFzl2zWgfNI",
@@ -58,6 +63,11 @@ class index extends Component {
             <div className="col-sm-8">
               <h3 className="kanit ">What is Theethawat ?</h3>
               <p className="kanitlight">{this.state.introduction}</p>
+              <div className="flex">
+                <a className="thp-icon">
+                  Hi <FontAwesomeIcon icon="facebook-square" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
