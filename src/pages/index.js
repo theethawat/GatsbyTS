@@ -3,32 +3,66 @@ import "bootstrap/dist/css/bootstrap.css"
 import "bootstrap/dist/js/bootstrap"
 import "../assets/global.css"
 import Title from "../components/title"
-import { Link } from "gatsby"
-export default () => (
-  <div>
-    <Title
-      pagetitle="Theethawat Savastham"
-      subtitle="<TheethawatSpace is the space of 'ธีร์ธวัช สวาสดิ์ธรรม'/> "
-    />
+import firebase from "firebase"
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBziLwjuiOea2awTRZ05r-WqFzl2zWgfNI",
+  authDomain: "th-webpage.firebaseapp.com",
+  databaseURL: "https://th-webpage.firebaseio.com",
+  projectId: "th-webpage",
+  storageBucket: "th-webpage.appspot.com",
+  messagingSenderId: "706455690961",
+  appId: "1:706455690961:web:e61b26930afd93c2",
+}
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig)
+class index extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      introduction: "",
+      photo: "",
+    }
+  }
 
-    <div className="container">
-      <h3 className="kanit ">What is Theethawat ?</h3>
-      <div className="row">
-        <div className="col sm-9">
+  componentDidMount() {
+    let database = firebase.database()
+    database
+      .ref("/profile")
+      .once("value")
+      .then(snapshot => {
+        this.setState({
+          introduction: snapshot.val() && snapshot.val().intro,
+          photo: snapshot.val() && snapshot.val().photo,
+        })
+      })
+  }
+
+  render() {
+    return (
+      <div>
+        <Title
+          pagetitle="Theethawat Savastham"
+          subtitle="<TheethawatSpace is the space of 'ธีร์ธวัช สวาสดิ์ธรรม'/> "
+        />
+
+        <div className="container">
           <div className="row">
-            <div className="col sm-9">
-              <blockquote className="blockquote">
-                <p className="mb-0">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Integer posuere erat a ante.
-                </p>
-              </blockquote>
+            <div className="col-sm-4">
+              <img
+                className="img-fluid"
+                alt="Theethawat Photo"
+                src={this.state.photo}
+              />
             </div>
-            <div className="col sm-3" />
+            <div className="col-sm-8">
+              <h3 className="kanit ">What is Theethawat ?</h3>
+              <p>{this.state.introduction}</p>
+            </div>
           </div>
         </div>
-        <div className="col sm-3" />
       </div>
-    </div>
-  </div>
-)
+    )
+  }
+}
+export default index

@@ -1,11 +1,9 @@
 import React from "react"
-import Title from "../components/title"
+import Layout from "../components/layout"
+import { graphql } from "gatsby"
 
-export default () => (
-  <div>
-    <Title pagetitle="About Me" subtitle="เกี่ยวกับ Theethawat Savastham" />
-    <div className="container">
-      <h3>Hello this is about </h3>
-    </div>
-  </div>
+export default ({ data }) => (
+  <Layout>
+    <h3>About Test </h3>
+  </Layout>
 )
